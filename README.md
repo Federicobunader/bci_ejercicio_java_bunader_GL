@@ -16,3 +16,17 @@ mvn clean package
 
 java -jar target/nombre-de-tu-archivo.jar (Que se creo en el paso anterior)
 
+Pasos para ejecutar los tests: 
+
+1- Navegar hasta el directorio raiz del proyecto
+
+2 - Ejecuta los tests utilizando Maven.
+
+Comandos:
+
+cd ruta/a/tu/proyecto
+
+mvn test
+
+
+
