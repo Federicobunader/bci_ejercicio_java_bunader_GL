@@ -14,5 +14,5 @@ cd ruta/a/tu/proyecto
 
 mvn clean package
 
-java -jar target/nombre-de-tu-archivo.jar
+java -jar target/nombre-de-tu-archivo.jar (Que se creo en el paso anterior)
 
