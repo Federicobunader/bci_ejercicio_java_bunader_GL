@@ -4,6 +4,7 @@ import com.example.bci_ejercicio_java_bunader_gl.dtos.UserDTO;
 import com.example.bci_ejercicio_java_bunader_gl.services.IUserService;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -30,7 +31,10 @@ public class UserController {
             responseBody.put("mensaje", response.getBody());
         } else {
             UserDTO userDTOResponse = (UserDTO) response.getBody();
-            responseBody = new ObjectMapper().convertValue(userDTOResponse, new TypeReference<Map<String, Object>>() {});
+
+            ObjectMapper om = new ObjectMapper();
+            om.registerModule(new JavaTimeModule());
+            responseBody = om.convertValue(userDTOResponse, new TypeReference<Map<String, Object>>() {});
         }
         return new ResponseEntity<>(responseBody, response.getStatusCode());
     }

@@ -12,6 +12,7 @@ public interface UserMapper {
     UserMapper INSTANCE = Mappers.getMapper(UserMapper.class);
 
 
+
     @Mapping(target = "phones", expression = "java(com.example.bci_ejercicio_java_bunader_gl.mappers.PhoneMapper.INSTANCE.phoneEntitiesToDTOs(user.getPhones()))")
     UserDTO userEntityToDto(User user);
 

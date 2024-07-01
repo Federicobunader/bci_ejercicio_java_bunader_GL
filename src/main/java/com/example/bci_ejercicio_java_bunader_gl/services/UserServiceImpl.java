@@ -14,9 +14,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import org.springframework.util.Assert;
 
-import java.time.LocalDateTime;
+import java.time.LocalDate;
 import java.util.Map;
 import java.util.UUID;
 
@@ -62,10 +61,13 @@ public class UserServiceImpl implements IUserService {
         User user = userRepository.create(userMapper.userDtoToEntity(userDTO));
         userDTO = userMapper.userEntityToDto(user);
 
-        LocalDateTime currentDate = LocalDateTime.now();
+        LocalDate currentDate = LocalDate.now();
+
         userDTO.setCreated(currentDate);
         userDTO.setModified(currentDate);
         userDTO.setLastLogin(currentDate);
+
+        userDTO.setActive(true);
         return ResponseEntity.ok(userDTO);
     }
 
